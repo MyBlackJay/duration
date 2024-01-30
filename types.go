@@ -202,7 +202,7 @@ func (d *Duration) UnmarshalJSON(source []byte) error {
 }
 
 // MarshalJSON designed to deserialize *Duration in a string in ISO 8601 duration format defined in user code via the json library
-func (d *Duration) MarshalJSON() ([]byte, error) {
+func (d Duration) MarshalJSON() ([]byte, error) {
 	return []byte("\"" + d.String() + "\""), nil
 }
 
@@ -226,6 +226,6 @@ func (d *Duration) UnmarshalYAML(unmarshal func(interface{}) error) error {
 }
 
 // MarshalYAML designed to deserialize *Duration in a string in ISO 8601 duration format defined in user code via the gopkg.in/yaml.v3 library
-func (d *Duration) MarshalYAML() (interface{}, error) {
+func (d Duration) MarshalYAML() (interface{}, error) {
 	return d.String(), nil
 }
