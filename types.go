@@ -181,7 +181,7 @@ func FormatTimeDuration(d time.Duration) string {
 	return NewFromTimeDuration(d).String()
 }
 
-// UnmarshalJSON designed to serialize a string in ISO 8601 duration format in *Duration defined in user code via the json library
+// UnmarshalJSON designed to serialize a string in ISO 8601 duration format to *Duration, defined in user code via the json library
 func (d *Duration) UnmarshalJSON(source []byte) error {
 	value := string(source)
 
@@ -201,12 +201,12 @@ func (d *Duration) UnmarshalJSON(source []byte) error {
 	}
 }
 
-// MarshalJSON designed to deserialize *Duration in a string in ISO 8601 duration format defined in user code via the json library
+// MarshalJSON designed to deserialize *Duration to a string in ISO 8601 duration format, defined in user code via the json library
 func (d Duration) MarshalJSON() ([]byte, error) {
 	return []byte("\"" + d.String() + "\""), nil
 }
 
-// UnmarshalYAML designed to deserialize *Duration in a string in ISO 8601 duration format defined in user code via the gopkg.in/yaml.v3 library
+// UnmarshalYAML designed to serialize a string in ISO 8601 duration format to *Duration, defined in user code via the gopkg.in/yaml.v3 library
 func (d *Duration) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var str string
 	if err := unmarshal(&str); err != nil {
@@ -225,7 +225,7 @@ func (d *Duration) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	}
 }
 
-// MarshalYAML designed to deserialize *Duration in a string in ISO 8601 duration format defined in user code via the gopkg.in/yaml.v3 library
+// MarshalYAML designed to deserialize *Duration to a string in ISO 8601 duration format, defined in user code via the gopkg.in/yaml.v3 library
 func (d Duration) MarshalYAML() (interface{}, error) {
 	return d.String(), nil
 }
